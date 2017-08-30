@@ -1,0 +1,2 @@
+#特殊处理格式定义
+bhtest7001.PVP_LOAN_APP.serno=serno||"天津滨海"
