@@ -47,7 +47,7 @@ public class PutDataOver{
 		String del = ".exping";
 		GlobalConf.logger.info(" 任务:"+GlobalConf.TABLE_NAME+" 开始执行.");
 		//BufferedWriter bufferedWriter = Files.newBufferedWriter(Paths.get(filename+del),StandardCharsets.UTF_8);
-		BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(filename+del),819200);
+		BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(filename+del),8192000);
 		//PrintWriter pw = new PrintWriter(new FileWriter(filename));
 		long ld_before = System.currentTimeMillis();
 		long ld_after = 0;

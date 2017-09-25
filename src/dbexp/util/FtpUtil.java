@@ -1,5 +1,6 @@
 package dbexp.util;
 
+import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -51,6 +52,7 @@ public class FtpUtil {
 	   }
 	   ftp.setFileType(FTPClient.BINARY_FILE_TYPE);
 	   CreateDirecroty(path,ftp);
+	   ftp.setBufferSize(2048*2048*10);
 	   ftp.changeWorkingDirectory(path);
 	   ftp.storeFile(filename, input);
 	   input.close();
@@ -84,10 +86,13 @@ public class FtpUtil {
 	    ) throws Exception {
 	  boolean flag = false;
 	  try {
+
 	   FileInputStream in = new FileInputStream(new File(orginfilename));
-	    flag = uploadFile(url, port, username, password, path,filename, in);
+       BufferedInputStream input = new BufferedInputStream(in);
+	    flag = uploadFile(url, port, username, password, path,filename, input);
 	   if(flag){
-		   GlobalConf.logger.info("文件"+filename+"上传成功！");
+		  // GlobalConf.logger.info("文件"+filename+"上传成功！");
+		   System.out.println("上传成功！");
 	   }else{ GlobalConf.logger.info("文件"+filename+"上传失败！");}
 	  } catch (Exception e) {
 		  GlobalConf.logger.error(e.getMessage());	   
@@ -165,8 +170,10 @@ public class FtpUtil {
 	 
 	    //测试
 	 public static void main(String[] args) throws Exception {
-	  
-	  upLoadFromProduction("192.200.3.189", 21, "wft", "wft123", "/home/wft/file/tst_jy", "mgr.dmp", "E:/mgr.dmp");
+      double ld_before = System.currentTimeMillis();
+	  upLoadFromProduction("192.200.5.174", 21, "weblogic", "weblogic", "/home/weblogic/app/ODS_TST_CMS/jar", "sts.rar", "F:/sts.rar");
+	  double ld_after = System.currentTimeMillis();
+	  System.out.println("上传成功，共耗时：" + (ld_after - ld_before) / 1000 + "秒。");
 	 }
 	
 }

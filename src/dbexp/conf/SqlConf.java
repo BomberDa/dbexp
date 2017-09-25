@@ -32,6 +32,7 @@ public class SqlConf {
 			querySql = " select  TABSCHEMA  OWNER, TABNAME  TABLE_NAME, COLNAME  COLUMN_NAME, TYPENAME  DATA_TYPE  from   SYSCAT.COLUMNS  where  TABSCHEMA = '"+tablename[0]+"' and TABNAME='"+tablename[1]+"' order by COLNO asc ";
 			 message = "查询db2数据库表信息..";
 			 dbtype = "db2";
+			System.setProperty("db2.jcc.charsetDecoderEncoder", "3");
 		}else if(GlobalConf.CONN_CLASSNAME.indexOf("mysql")>=0){
 			querySql = " select TABLE_SCHEMA OWNER,TABLE_NAME,COLUMN_NAME,DATA_TYPE from information_schema.columns where TABLE_SCHEMA = '"+tablename[0]+"' and TABLE_NAME = '"+tablename[1]+"' order by ORDINAL_POSITION asc ";
 			message = "查询mysql数据库表信息..";
