@@ -1,3 +1,2 @@
-#特殊处理格式定义
 
 CRMS.RISK_SIGN

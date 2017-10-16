@@ -142,6 +142,14 @@ public class Config {
 			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 			GlobalConf.EXP_DATE = format.format(new Date());
 		}
+		//是否使用原始数据
+		if(map.containsKey("-od")&&"y".equals(map.get("-od"))) {
+			GlobalConf.ORIGINAL_DATA = true;
+		}
+		//是否使用原始数据
+		if(map.containsKey("-ck")&&"n".equals(map.get("-ck"))) {
+			GlobalConf.CKSUM = false;
+		}
 		//查询条件
 		if(!tablelist.isEmpty()){
 //			GlobalConf.TABLE_CONDITION = map.get("-q");

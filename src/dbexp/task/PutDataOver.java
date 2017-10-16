@@ -100,7 +100,9 @@ public class PutDataOver{
 					col += column+",";
 				}
 				col = col.substring(0,col.lastIndexOf(","));
-				col = "\""+GlobalConf.EXP_DATE+"\","+col;
+				if(!GlobalConf.ORIGINAL_DATA) {
+					col = "\""+GlobalConf.EXP_DATE+"\","+col;					
+				}
 				//pw.println(col);
 				bufferedWriter.write(col);
 				bufferedWriter.newLine();
@@ -118,8 +120,9 @@ public class PutDataOver{
 			}
 			
 			//执行cksum命令
-			Convert.callCMD(filename);
-
+			if(GlobalConf.CKSUM) {
+				Convert.callCMD(filename);				
+			}
 			//操作过得表名记录在tablelist.txt，再次调用时使用增量导入
 			if(GlobalConf.RUN_ALL){
 				String str = GlobalConf.TABLE_NAME.toUpperCase();

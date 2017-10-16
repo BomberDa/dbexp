@@ -13,7 +13,31 @@ import dbexp.conf.SqlConf;
 import dbexp.task.PutDataOver;
 import dbexp.util.Convert;
 import dbexp.util.FtpUtil;
-
+/**
+ * 可用参数
+ * <table>
+ * <tr>
+ * <td>-t</td><td>表名（-t=cmis.risk_sign）</td><td>必输</td>
+ * </tr><tr>
+ * <td>-s</td><td>系统简称（-s=CMS）</td><td>必输</td>
+ * </tr><tr>
+ * <td>-d</td><td>系统日期（-d=20170501）</td><td>必输, 默认系统当前日期</td>
+ * </tr><tr>
+ * <td>-q</td><td>查询条件,（-q=" and 1=1 "）如首次导出数据（tablelist.txt中没有该表名，则条件不生效）</td><td>可选</td>
+ * </tr><tr>
+ * <td>-dir</td><td>导出目录（-dir = \home\app）</td><td>可选,默认取config配置</td>
+ * </tr><tr>
+ * <td>-ftp</td><td>是否ftp数据 （-ftp=n）</td><td>可选,默认取config配置</td>
+ * </tr><tr>
+ * <td>-ftpdir</td><td>ftp数据地址</td><td>可选,默认取config配置</td>
+ * </tr><tr>
+ * <td>-od</td><td>是否使用原始数据（-od=y）</td><td>可选,  默认n（首列增加日期数据） </td>
+ * </tr><tr>
+ * <td>-ck</td><td>是否执行cksum命令（-ck=n）</td><td>可选,  默认y执行linux 的cksum命令 </td>
+ * </tr></table>
+ * @author UserName
+ *
+ */
 public class ExpRun {
 	public static void main(String[] args) throws Exception{
 		Connection conn=null;		

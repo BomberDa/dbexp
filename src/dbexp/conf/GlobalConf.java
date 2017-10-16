@@ -41,6 +41,10 @@ public class GlobalConf {
 	public static String PREPARESQL=null;
 	//设置数据日期YYYY-MM-DD
 	public static String EXP_DATE=null;  //用于导出数据前缀
+	//是否使用原始数据（数据首列添加日期列）
+	public static Boolean ORIGINAL_DATA = false;
+	//是否执行cksum命令
+	public static Boolean CKSUM = true;
 	// 指定日志文件所存放的路径
 	public static String LOG_PATH = null;
 	
